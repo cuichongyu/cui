@@ -5,18 +5,19 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>崔崇雨</h1>
-	<div class="box">
-		<ul>
-			<li><img src="s" alt=""></li>
-			<li><img src="" alt=""></li>
-			<li><img src="" alt=""></li>
-			<li><img src="" alt=""></li>
-			<li><img src="" alt=""></li>
-			<li><img src="" alt=""></li>
-		</ul>
-		<p></p>
-		<h2></h2>
-	</div>
+	<script>
+		var name = "The Window";
+var object = {
+  name: "My Object",
+  getNameFunc: function () {
+    return function () {
+      return this.name;
+    };
+  }
+};
+
+console.log(object.getNameFunc()());
+console.log(1);
+	</script>
 </body>
 </html>
