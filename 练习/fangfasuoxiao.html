@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<p>
+  <button id="big">放大</button>
+  <button id="small">缩小</button>
+</p>
+<img src="wc.gif" alt="" id="image"/>
+<script>
+	function myGetStyle(node,pName){
+  var styleObj; //可以获取样式属性值的对象
+  if(node.currentStyle==undefined){ //在非IE浏览器下使用
+    styleObj = getComputedStyle(node,null);
+  }else { //在IE浏览器中使用
+    styleObj = node.currentStyle;
+  }
+  //如果要把某个变量当做属性名，此时不要用点的方式，而是选择用中括号
+  return styleObj[pName];
+}
+</script>
+<script>
+  //① 获取两个按钮 和 一个图片节点对象
+  var big = document.getElementById('big');
+  var small = document.getElementById('small');
+  var image = document.getElementById('image');
+  //② 放大：给放大按钮注册点击事件，获取图片原有的宽度。在原有的基础之上增50
+  big.onclick = function(){
+    //获取
+    var v = parseInt(myGetStyle(image,'width'));
+    //console.log(v);
+    v = v + 50;
+    //设置样式值
+    image.style.width = v + 'px';
+  };
+   //缩小
+   small.onclick = function(){
+   	var v = parseInt(myGetStyle(image,'width'));
+   	v=v-50;
+   	image.style.width=v+'px'
+   	if (v<150) {
+   		v=150;
+   	}
+   	image.style.width = v+'px';
+   };
+</script>
+
+</body>
+</html>
