@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    input {
+      width: 50px;
+    }
+    /*当button标签有类名jy时，鼠标光标显示禁用*/
+    button.jy {
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <!-- 减按钮-->
+  <button id="reduce" class="jy" disabled="disabled">-</button>
+  <!-- 显示数量的文本框-->
+  <input id="txt" type="text" value="1" readonly="readonly"/>
+  <!-- 加按钮-->
+  <button id="add">+</button>
+  <script>
+  	//获取节点对象
+  	var reduce = document.getElementById('reduce');
+  	var txt = document.getElementById('txt');
+  	var add = document.getElementById('add');
+  	//给节点对象添加事件
+  	add.onclick = function(){
+  		//获取文本框中原有的数量
+  		var count = Number(txt.value);
+  		count = count+1;
+  		txt.value = count;
+  		if (count>1) {
+  			reduce.disabled = false;
+  			reduce.className = '';
+  		}else{
+  			reduce.disabled = true;
+  			reduce.className = 'jy';
+  		}
+  	};
+  	//给减号添加事件
+  	reduce.onclick = function(){
+  		var count = Number(txt.value);
+  		 count = count - 1;
+  		 txt.value = count;
+        if (count>1) {
+        	reduce.disabled =false;
+        	reduce.className = '';
+        }else{
+        	reduce.disabled = true;
+        	reduce.className = 'jy';
+        }
+  	}
+  </script>
+</body>
+</html>
